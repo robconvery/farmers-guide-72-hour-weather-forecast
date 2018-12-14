@@ -1,0 +1,12 @@
+{
+    "name": "robertconvery/farmers-guide-72-hour-weather-forecast",
+    "description": "screen scrape of Farmers Guide 72 hour weather forcast",
+    "authors": [
+        {
+            "name": "Robert Convery",
+            "email": "robconvery@me.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
