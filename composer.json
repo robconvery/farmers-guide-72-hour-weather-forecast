@@ -24,16 +24,16 @@
     },
     "scripts": {
         "cs": [
-            "./vendor/bin/phpcs --standard=PSR2 app"
+            "./vendor/bin/phpcs --standard=PSR2 src"
         ],
         "cs-fix": [
-            "./vendor/bin/phpcbf --standard=PSR2 app"
+            "./vendor/bin/phpcbf --standard=PSR2 src"
         ]
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Robconvery\\FarmersGuideForecast\\TimezonesServiceProvider"
+                "Robconvery\\FarmersGuideForecast\\PackageServiceProvider"
             ]
         }
     }
