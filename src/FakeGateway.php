@@ -21,5 +21,4 @@ class FakeGateway implements GatewayInterface
     {
         return new ForecastAdapter();
     }
-
 }
