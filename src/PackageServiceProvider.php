@@ -1,8 +1,10 @@
 <?php
 
-namespace Robconvery\FarmersGuideForecast\Providers;
+namespace Robconvery\FarmersGuideForecast;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
+use Robconvery\FarmersGuideForecast\Interfaces\GatewayInterface;
 
 class PackageServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,9 @@ class PackageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // associate `FarmersGuideGateway` with `GatewayInterface`
+        $this->app->bind(GatewayInterface::class, function () {
+            //
+        });
     }
 }
