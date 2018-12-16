@@ -9,7 +9,9 @@
 
 namespace Robconvery\FarmersGuideForecast;
 
+use Carbon\Carbon;
 use Robconvery\FarmersGuideForecast\Interfaces\AdapterInterface;
+/*use Robertconvery\WeatherAdapterInterface\WeatherAdapterInterface;*/
 
 class ForecastAdapter implements AdapterInterface
 {
@@ -53,4 +55,61 @@ class ForecastAdapter implements AdapterInterface
     {
         return count($this->data);
     }
+
+    /**
+     * @return string
+     */
+    public function location(): string
+    {
+        //
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function datetime(): Carbon
+    {
+
+    }
+
+    /**
+     * @return string
+     */
+    public function main(): string
+    {
+        //
+    }
+
+    /**
+     * @return string
+     */
+    public function description(): string
+    {
+        //
+    }
+
+    /**
+     * @return int
+     */
+    public function temperature(): int
+    {
+        //
+    }
+
+    /**
+     * @return int
+     */
+    public function temperatureMin(): int
+    {
+        //
+    }
+
+    /**
+     * @return int
+     */
+    public function temperatureMax(): int
+    {
+        //
+    }
+
 }

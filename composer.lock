@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78b14e9fe84a200cef9d8e634d1d3945",
+    "content-hash": "8478da9f9f46f08da3afbc2c29c5024d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -782,25 +782,24 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.7.0",
+            "version": "1.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "90ff5556d4bd25954c272a22654e7bd43e8ab055"
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/90ff5556d4bd25954c272a22654e7bd43e8ab055",
-                "reference": "90ff5556d4bd25954c272a22654e7bd43e8ab055",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": "^7.1.8",
-                "symfony/translation": "^4.0"
+                "php": ">=5.3.9",
+                "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.1.5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
             "suggest": {
                 "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
@@ -816,7 +815,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Carbon\\": "src/Carbon/"
+                    "": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -837,7 +836,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-12-02T10:14:51+00:00"
+            "time": "2018-11-22T18:23:02+00:00"
         },
         {
             "name": "opis/closure",
@@ -1261,6 +1260,44 @@
                 "uuid"
             ],
             "time": "2018-08-12T15:49:01+00:00"
+        },
+        {
+            "name": "robertconvery/weather-adapter-interface",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robconvery/weather-adapter-interface.git",
+                "reference": "83d8627f379a24266d789560f9dffc3b990a316d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/robconvery/weather-adapter-interface/zipball/83d8627f379a24266d789560f9dffc3b990a316d",
+                "reference": "83d8627f379a24266d789560f9dffc3b990a316d",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^1.26.3",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Convery",
+                    "email": "robconvery@me.com"
+                }
+            ],
+            "description": "A shared interface for weather gateways",
+            "support": {
+                "source": "https://github.com/robconvery/weather-adapter-interface/tree/master",
+                "issues": "https://github.com/robconvery/weather-adapter-interface/issues"
+            },
+            "time": "2018-12-16T17:00:07+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
