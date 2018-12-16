@@ -10,7 +10,7 @@ interface GatewayInterface
 {
     /**
      * @param string $postcode
-     * @return ForecastAdapter
+     * @return GatewayInterface
      */
-    public function getForecast(string $postcode): AdapterInterface;
+    public function getForecast(string $postcode): GatewayInterface;
 }
