@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8478da9f9f46f08da3afbc2c29c5024d",
+    "content-hash": "1afc8dc1eacf4c9b062531893451935d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1262,17 +1262,17 @@
             "time": "2018-08-12T15:49:01+00:00"
         },
         {
-            "name": "robertconvery/weather-adapter-interface",
+            "name": "robconvery/weather-adapter-interface",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robconvery/weather-adapter-interface.git",
-                "reference": "83d8627f379a24266d789560f9dffc3b990a316d"
+                "reference": "f91ed387896dea8f833153ce0e17b84139582411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robconvery/weather-adapter-interface/zipball/83d8627f379a24266d789560f9dffc3b990a316d",
-                "reference": "83d8627f379a24266d789560f9dffc3b990a316d",
+                "url": "https://api.github.com/repos/robconvery/weather-adapter-interface/zipball/f91ed387896dea8f833153ce0e17b84139582411",
+                "reference": "f91ed387896dea8f833153ce0e17b84139582411",
                 "shasum": ""
             },
             "require": {
@@ -1297,7 +1297,7 @@
                 "source": "https://github.com/robconvery/weather-adapter-interface/tree/master",
                 "issues": "https://github.com/robconvery/weather-adapter-interface/issues"
             },
-            "time": "2018-12-16T17:00:07+00:00"
+            "time": "2018-12-16T17:37:45+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
