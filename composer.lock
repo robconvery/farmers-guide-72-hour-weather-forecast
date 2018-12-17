@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ec15b519f4850ee78c577bc6e742fd4",
+    "content-hash": "93f91d77889c5a0bb55f48596c09eec0",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -782,25 +782,24 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.7.0",
+            "version": "1.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "90ff5556d4bd25954c272a22654e7bd43e8ab055"
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/90ff5556d4bd25954c272a22654e7bd43e8ab055",
-                "reference": "90ff5556d4bd25954c272a22654e7bd43e8ab055",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": "^7.1.8",
-                "symfony/translation": "^4.0"
+                "php": ">=5.3.9",
+                "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.1.5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
             "suggest": {
                 "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
@@ -816,7 +815,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Carbon\\": "src/Carbon/"
+                    "": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -837,20 +836,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-12-02T10:14:51+00:00"
+            "time": "2018-11-22T18:23:02+00:00"
         },
         {
             "name": "opis/closure",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "d3209e46ad6c69a969b705df0738fd0dbe26ef9e"
+                "reference": "de00c69a2328d3ee5baa71fc584dc643222a574c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/d3209e46ad6c69a969b705df0738fd0dbe26ef9e",
-                "reference": "d3209e46ad6c69a969b705df0738fd0dbe26ef9e",
+                "url": "https://api.github.com/repos/opis/closure/zipball/de00c69a2328d3ee5baa71fc584dc643222a574c",
+                "reference": "de00c69a2328d3ee5baa71fc584dc643222a574c",
                 "shasum": ""
             },
             "require": {
@@ -858,7 +857,7 @@
             },
             "require-dev": {
                 "jeremeamia/superclosure": "^2.0",
-                "phpunit/phpunit": "^4.0"
+                "phpunit/phpunit": "^4.0|^5.0|^6.0|^7.0"
             },
             "type": "library",
             "extra": {
@@ -898,7 +897,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2018-10-02T13:36:53+00:00"
+            "time": "2018-12-16T21:48:23+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1261,6 +1260,57 @@
                 "uuid"
             ],
             "time": "2018-08-12T15:49:01+00:00"
+        },
+        {
+            "name": "robconvery/weather-adapter",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robconvery/weather-adapter-interface.git",
+                "reference": "d1f28d3c2653523a933d7b017578bea9dd5bc405"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/robconvery/weather-adapter-interface/zipball/d1f28d3c2653523a933d7b017578bea9dd5bc405",
+                "reference": "d1f28d3c2653523a933d7b017578bea9dd5bc405",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^1.26.3",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Robconvery\\WeatherAdapter\\": "src/"
+                }
+            },
+            "scripts": {
+                "cs": [
+                    "./vendor/bin/phpcs --standard=PSR2 src"
+                ],
+                "cs-fix": [
+                    "./vendor/bin/phpcbf --standard=PSR2 src"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Convery",
+                    "email": "robconvery@me.com"
+                }
+            ],
+            "description": "A shared interface for weather gateways",
+            "support": {
+                "source": "https://github.com/robconvery/weather-adapter-interface/tree/1.2.5",
+                "issues": "https://github.com/robconvery/weather-adapter-interface/issues"
+            },
+            "time": "2018-12-17T11:08:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3970,12 +4020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e"
+                "reference": "4274b5a139f0305443ed1b6709448bb9b3a45a4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e",
-                "reference": "ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/4274b5a139f0305443ed1b6709448bb9b3a45a4f",
+                "reference": "4274b5a139f0305443ed1b6709448bb9b3a45a4f",
                 "shasum": ""
             },
             "require": {
@@ -4013,7 +4063,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-12T03:06:35+00:00"
+            "time": "2018-12-17T02:43:59+00:00"
         },
         {
             "name": "theseer/tokenizer",
