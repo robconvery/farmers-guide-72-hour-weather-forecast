@@ -6,6 +6,8 @@
 
 namespace Robconvery\FarmersGuideForecast\Interfaces;
 
+use Illuminate\Support\Collection;
+
 interface GatewayInterface
 {
     /**
@@ -13,4 +15,9 @@ interface GatewayInterface
      * @return GatewayInterface
      */
     public function getForecast(string $postcode): GatewayInterface;
+
+    /**
+     * @return Collection
+     */
+    public function extract(): Collection;
 }

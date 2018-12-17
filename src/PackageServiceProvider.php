@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Robconvery\FarmersGuideForecast\Interfaces\AdapterInterface;
 use Robconvery\FarmersGuideForecast\Interfaces\GatewayInterface;
+use Robertconvery\WeatherAdapter\AbstractWeatherAdapter;
 
 class PackageServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,7 @@ class PackageServiceProvider extends ServiceProvider
         // return a `ForecastAdapter`, populate if `postcode` is passed.
         $this->app->bind(ForecastAdapter::class, function ($app, $params) {
 
+            $validDate =null;
             $postcode = current($params);
             $ForecastAdapter = app()->make(AdapterInterface::class);
 
@@ -43,10 +45,20 @@ class PackageServiceProvider extends ServiceProvider
                 app()->make(GatewayInterface::class)
                     ->getForecast($postcode)
                     ->extract()
-                    ->map(function ($forecast) use (&$ForecastAdapter) {
+                    ->map(function ($forecast) use (&$ForecastAdapter, $postcode, &$validDate) {
+
+                        $data = $forecast->toArray();
+                        if (isset($data[0])) {
+                            $validDate = $data[0];
+                        } else {
+                            $data[0] = $validDate;
+                        }
+
                         $ForecastAdapter->attach(
                             app()->make(AdapterInterface::class, [
-                                $forecast->toArray()
+                                array_merge([
+                                    'location' => $postcode
+                                ], $data)
                             ])
                         );
                     });

@@ -10,15 +10,17 @@
 namespace Robconvery\FarmersGuideForecast;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Robconvery\FarmersGuideForecast\Interfaces\AdapterInterface;
-/*use Robertconvery\WeatherAdapterInterface\WeatherAdapterInterface;*/
+use Robconvery\WeatherAdapter\WeatherAdapterInterface;
 
-class ForecastAdapter implements AdapterInterface
+class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
 {
     /**
      * @var array
      */
     protected $data=[];
+    protected $forecasts=[];
 
     /**
      * ForecastAdapter constructor.
@@ -31,29 +33,21 @@ class ForecastAdapter implements AdapterInterface
 
     /**
      * Append a forecast to the list of forecasts
-     * @param AdapterInterface $adapter
+     * @param WeatherAdapterInterface $adapter
      * @return mixed
      */
-    public function attach(AdapterInterface $adapter)
+    public function attach(WeatherAdapterInterface $adapter)
     {
-        $this->data[] = $adapter;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function get()
-    {
-        //
+        $this->forecasts[] = $adapter;
     }
 
     /**
      * Number of forecasts found
-     * @return int
+     * @return Collection
      */
-    public function forecasts(): int
+    public function forecasts(): Collection
     {
-        return count($this->data);
+        return is_array($this->forecasts) ? collect($this->forecasts) : collect();
     }
 
     /**
@@ -61,7 +55,7 @@ class ForecastAdapter implements AdapterInterface
      */
     public function location(): string
     {
-        //
+        return isset($this->data['location']) ? $this->data['location'] : '';
     }
 
     /**
@@ -69,7 +63,27 @@ class ForecastAdapter implements AdapterInterface
      */
     public function datetime(): Carbon
     {
+        if (!isset($this->data[0])) {
+            throw new \RuntimeException('Missing day and month data');
+        }
 
+        if (!isset($this->data[1])) {
+            throw new \RuntimeException('Missing hour and minute data');
+        }
+
+        list($day, $month) = explode('/', $this->data[0]);
+        $day = (int)$day;
+        $month = (int)$month;
+
+        list($hour, $minute) = explode(':', $this->data[1]);
+        $hour = (int)$hour;
+        $minute = (int)$minute;
+
+        $datetime = Carbon::create(date('Y'), $month, $day);
+        $datetime->hour = $hour;
+        $datetime->minute = $minute;
+
+        return $datetime;
     }
 
     /**
@@ -77,7 +91,7 @@ class ForecastAdapter implements AdapterInterface
      */
     public function main(): string
     {
-        //
+        return $this->getTextual();
     }
 
     /**
@@ -85,7 +99,7 @@ class ForecastAdapter implements AdapterInterface
      */
     public function description(): string
     {
-        //
+        return $this->getTextual();
     }
 
     /**
@@ -93,7 +107,10 @@ class ForecastAdapter implements AdapterInterface
      */
     public function temperature(): int
     {
-        //
+        if (!isset($this->data[3])) {
+            throw new \RuntimeException('Missing temperature data');
+        }
+        return (int)round(preg_replace('/[^0-9\.\-]/', '', $this->data[3]), 0);
     }
 
     /**
@@ -101,7 +118,10 @@ class ForecastAdapter implements AdapterInterface
      */
     public function temperatureMin(): int
     {
-        //
+        if (!isset($this->data[3])) {
+            throw new \RuntimeException('Missing temperature data');
+        }
+        return (int)round(preg_replace('/[^0-9\.\-]/', '', $this->data[3]), 0);
     }
 
     /**
@@ -109,7 +129,31 @@ class ForecastAdapter implements AdapterInterface
      */
     public function temperatureMax(): int
     {
-        //
+        if (!isset($this->data[3])) {
+            throw new \RuntimeException('Missing temperature data');
+        }
+        return (int)round(preg_replace('/[^0-9\.\-]/', '', $this->data[3]), 0);
     }
 
+    /**
+     * @return string
+     */
+    private function getTextual(): string
+    {
+        if (!isset($this->data[4])) {
+            throw new \RuntimeException('Missing rain data');
+        }
+
+        if (!isset($this->data[6])) {
+            throw new \RuntimeException('Missing cloud data');
+        }
+
+        $rain = (int)preg_replace('/[^0-9\.]/', '', $this->data[4]);
+        if ($rain > 0) {
+            return $rain < 2 ? 'Light rain' : 'Rain';
+        } else {
+            $cloud = (int)preg_replace('/[^0-9\.]/', '', $this->data[6]);
+            return $cloud == 0 ? 'Clear Skies' : 'Cloudy';
+        }
+    }
 }

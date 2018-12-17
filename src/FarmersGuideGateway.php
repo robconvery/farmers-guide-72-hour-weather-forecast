@@ -10,6 +10,7 @@
 namespace Robconvery\FarmersGuideForecast;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Robconvery\FarmersGuideForecast\Interfaces\GatewayInterface;
 use GuzzleHttp\Client;
 
@@ -40,7 +41,7 @@ class FarmersGuideGateway implements GatewayInterface
                 throw new \HttpException('Unable to retrieve Farmers Guide data.');
             }
         } catch (\Exception $e) {
-            //
+            Log::error($e->getMessage());
         }
         return $this;
     }
@@ -72,7 +73,7 @@ class FarmersGuideGateway implements GatewayInterface
             throw new \RuntimeException('The `Farmers Guide` has not responded.');
         }
 
-        $this->data = collect($this->extractRows())
+        $data = collect($this->extractRows())
             ->filter(function ($row) {
                 return $row->getElementsByTagName('td')->length;
             })
@@ -83,7 +84,7 @@ class FarmersGuideGateway implements GatewayInterface
                     }
                 });
             });
-        return $this->data;
+        return $data;
     }
 
     /**
