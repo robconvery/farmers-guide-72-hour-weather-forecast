@@ -151,7 +151,7 @@ class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
 
         $rain = (int)preg_replace('/[^0-9\.]/', '', $this->data[4]);
         if ($rain > 0) {
-            return $rain < 2 ? 'Light rain ' : 'Rain ' . $rain . 'mm';
+            return $rain <= 2 ? 'Light rain' : 'Rain ' . $rain . 'mm';
         } else {
             $cloud = (int)preg_replace('/[^0-9\.]/', '', $this->data[6]);
             return $cloud == 0 ? 'Clear Skies' : 'Cloudy';
