@@ -14,7 +14,6 @@
         }
     ],
     "require-all": true,
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.1",
         "ext-libxml": "*",
