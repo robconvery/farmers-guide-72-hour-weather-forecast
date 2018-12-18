@@ -123,7 +123,7 @@ class ForecastAdapterTest extends TestCase
             $cloud = (int)preg_replace('/[^0-9\.]/', '', $data[6]);
             $main = '';
             if ($rain > 0) {
-                $main = $rain < 2 ? 'Light rain' : 'Rain';
+                $main = $rain < 2 ? 'Light rain' : 'Rain ' . $rain . 'mm';
             } else {
                 $main = $cloud == 0 ? 'Clear Skies' : 'Cloudy';
             }

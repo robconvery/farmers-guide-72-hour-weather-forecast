@@ -140,17 +140,18 @@ class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
      */
     private function getTextual(): string
     {
+        // Rain amount in mm
         if (!isset($this->data[4])) {
             throw new \RuntimeException('Missing rain data');
         }
-
+        // Cloud percentage
         if (!isset($this->data[6])) {
             throw new \RuntimeException('Missing cloud data');
         }
 
         $rain = (int)preg_replace('/[^0-9\.]/', '', $this->data[4]);
         if ($rain > 0) {
-            return $rain < 2 ? 'Light rain' : 'Rain';
+            return $rain < 2 ? 'Light rain ' : 'Rain ' . $rain . 'mm';
         } else {
             $cloud = (int)preg_replace('/[^0-9\.]/', '', $this->data[6]);
             return $cloud == 0 ? 'Clear Skies' : 'Cloudy';
