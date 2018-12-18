@@ -37,8 +37,8 @@ class PackageServiceProvider extends ServiceProvider
         // return a `ForecastAdapter`, populate if `postcode` is passed.
         $this->app->bind(ForecastAdapter::class, function ($app, $params) {
 
-            $validDate =null;
             $postcode = current($params);
+            $validDate =null;
             $ForecastAdapter = app()->make(AdapterInterface::class);
 
             if (is_string($postcode) && strlen(trim($postcode))) {
