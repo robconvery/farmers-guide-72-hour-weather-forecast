@@ -1,0 +1,33 @@
+version: 2
+
+jobs:
+
+  build-test:
+
+    docker:
+      - image: circleci/php:7.2-node-browsers
+
+    working_directory: ~/laravel
+
+    steps:
+
+      - checkout
+
+      - run: sudo apt-get install -y libsqlite3-dev zlib1g-dev libpng-dev libjpeg62-turbo-dev
+      - run: sudo docker-php-ext-install zip pdo_mysql gd exif
+      - run: sudo composer self-update
+      - run: composer install -n --prefer-dist
+      - run: ./vendor/bin/phpunit
+      - run: composer cs
+
+
+workflows:
+  version: 2
+  build-check:
+    jobs:
+      - build-test:
+          filters:
+            branches:
+              only:
+                - master
+
