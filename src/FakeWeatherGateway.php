@@ -37,6 +37,6 @@ class FakeWeatherGateway implements GatewayInterface
      */
     public static function testData(): array
     {
-        return include dirname(__DIR__) . '/config/test_data.php';
+        return include dirname(__DIR__) . '/config/farmers_guide_test_data.php';
     }
 }

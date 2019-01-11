@@ -19,7 +19,8 @@ class PackageServiceProvider extends ServiceProvider
     {
         $this->publishes([
             dirname(__DIR__) . '/../config/farmers_guide.php' => config_path('farmers_guide.php'),
-        ], 'config');
+            dirname(__DIR__) . '/../config/farmers_guide_test_data.php' => config_path('farmers_guide_test_data.php'),
+        ], 'farmers-guide');
     }
 
     /**
@@ -56,9 +57,7 @@ class PackageServiceProvider extends ServiceProvider
 
                         $ForecastAdapter->attach(
                             app()->make(AdapterInterface::class, [
-                                array_merge([
-                                    'location' => $postcode
-                                ], $data)
+                                array_merge(['location' => $postcode], $data)
                             ])
                         );
                     });
