@@ -18,8 +18,8 @@ class PackageServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            dirname(__DIR__) . '/../config/farmers_guide.php' => config_path('farmers_guide.php'),
-            dirname(__DIR__) . '/../config/farmers_guide_test_data.php' => config_path('farmers_guide_test_data.php'),
+            dirname(__DIR__) . '/config/farmers_guide.php' => config_path('farmers_guide.php'),
+            dirname(__DIR__) . '/config/farmers_guide_test_data.php' => config_path('farmers_guide_test_data.php'),
         ], 'farmers-guide');
     }
 
