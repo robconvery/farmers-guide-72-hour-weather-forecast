@@ -98,13 +98,17 @@ class FarmersGuideGateway implements GatewayInterface
         $dom->loadHTML($this->getContent());
 
         $xpath = new \DOMXPath($dom);
-        $table =$xpath
+        $table = $xpath
             ->query("//*[@class='table forecast-table hidden-xs']")
             ->item(0);
 
-        return $this->convertToArray(
-            $table->getElementsByTagName("tr")
-        );
+        if ($table instanceof \DOMElement) {
+            return $this->convertToArray(
+                $table->getElementsByTagName("tr")
+            );
+        } else {
+            return [];
+        }
     }
 
     /**
