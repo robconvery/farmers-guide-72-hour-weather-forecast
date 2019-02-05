@@ -119,11 +119,11 @@ class ForecastAdapterTest extends TestCase
             // test maximum temperature
             $this->assertEquals($temp, $Forecast->temperatureMax());
 
-            $rain = (int)preg_replace('/[^0-9\.]/', '', $data[4]);
-            $cloud = (int)preg_replace('/[^0-9\.]/', '', $data[6]);
+            $rain = (float)preg_replace('/[^0-9\.]/', '', $data[4]);
+            $cloud = (float)preg_replace('/[^0-9\.]/', '', $data[6]);
             $main = '';
             if ($rain > 0) {
-                $main = $rain <= 2 ? 'Light rain' : 'Rain ' . $rain . 'mm';
+                $main = $rain <= 1 ? 'Light rain' : 'Rain ' . $rain . 'mm';
             } else {
                 $main = $cloud == 0 ? 'Clear Skies' : 'Cloudy';
             }

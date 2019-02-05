@@ -149,11 +149,11 @@ class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
             throw new \RuntimeException('Missing cloud data');
         }
 
-        $rain = (int)preg_replace('/[^0-9\.]/', '', $this->data[4]);
+        $rain = (float)preg_replace('/[^0-9\.]/', '', $this->data[4]);
         if ($rain > 0) {
             return $rain <= 2 ? 'Light rain' : 'Rain ' . $rain . 'mm';
         } else {
-            $cloud = (int)preg_replace('/[^0-9\.]/', '', $this->data[6]);
+            $cloud = (float)preg_replace('/[^0-9\.]/', '', $this->data[6]);
             return $cloud == 0 ? 'Clear Skies' : 'Cloudy';
         }
     }
