@@ -35,7 +35,9 @@ class FarmersGuideGateway implements GatewayInterface
     {
         try {
             $postcode = trim($postcode);
-            $this->response = (new Client())
+            $this->response = (new Client([
+                'verify' => false
+            ]))
                 ->request('GET', 'https://www.farmersguide.co.uk/weather/?postcode=' . urlencode($postcode));
             if ($this->validateResponse() === false) {
                 throw new \HttpException('Unable to retrieve Farmers Guide data.');
