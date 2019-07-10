@@ -130,6 +130,17 @@ class FarmersGuideGateway implements GatewayInterface
      */
     private function extractCellValue(\DOMElement $cell): string
     {
+        if ($cell->hasAttribute('class')) {
+            if ($cell->getAttribute('class') == 'weather-icon') {
+                if ($cell->hasChildNodes()) {
+                    // return the weather description
+                    return $cell->getElementsByTagName('img')
+                            ->item(0)
+                            ->getAttribute('title');
+                }
+            }
+        }
+        // return the other value
         return collect($this->convertToArray($cell->childNodes))
         ->map(function ($node) {
             return $node->nodeValue;

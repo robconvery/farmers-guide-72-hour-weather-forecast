@@ -140,7 +140,8 @@ class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
      */
     private function getTextual(): string
     {
-        // Rain amount in mm
+        return $this->data[2];
+        /*// Rain amount in mm
         if (!isset($this->data[4])) {
             throw new \RuntimeException('Missing rain data');
         }
@@ -155,6 +156,6 @@ class ForecastAdapter implements AdapterInterface, WeatherAdapterInterface
         } else {
             $cloud = (float)preg_replace('/[^0-9\.]/', '', $this->data[6]);
             return $cloud == 0 ? 'Clear Skies' : 'Cloudy';
-        }
+        }*/
     }
 }
